@@ -238,3 +238,30 @@ reply.txt へ全文を保存する。
 
 ユーザーが reply.txt を更新しないよう指示した場合は、
 その指示を優先する。
+
+## 12. リポジトリのフォルダ構成
+
+リポジトリ内のファイルは、次の役割で置き分ける。
+
+```
+materials/
+    教材設計資料（curriculum-map.md、learning-objectives.md、template.md など）
+
+レジメ/
+    学生配布用 Markdown 教材（第NN回_タイトル.md）
+
+プログラム/
+    各回の sample / exercise（プログラム/第NN回/sample/、プログラム/第NN回/exercise/）
+```
+
+新しい授業教材を作成するときも、この構成を使用する。
+
+授業用のレジメや Java コードを materials へ置かない。
+
+レジメ内でコードファイルを示すときは、
+`プログラム/第NN回/sample/Main.java` のように
+リポジトリ内の位置がわかる表記にする。
+
+この構成はリポジトリ内の整理であり、
+Pleiades のプロジェクト構成・package 構成を
+決めるものではない（第 9 節のとおり未確定）。

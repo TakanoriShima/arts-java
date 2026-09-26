@@ -35,7 +35,7 @@ hero.showStatus();
 
 ## サンプルを読む
 
-`sample/Main.java`と`sample/Character.java`を読み、次を予想します。
+`プログラム/第16回/sample/Main.java`と`プログラム/第16回/sample/Character.java`を読み、次を予想します。
 
 - 画面に表示される名前とHP
 - `hero.damage(30)`の後のHP
@@ -45,7 +45,7 @@ Pleiadesで実行し、予想と結果を比べます。Consoleの表示を確�
 
 ## 演習
 
-`exercise/Main.java`を実行した後、次の変更を行います。
+`プログラム/第16回/exercise/Main.java`を実行した後、次の変更を行います。
 
 1. 敵の名前とHPを変更する。
 2. ダメージの値を変更する。

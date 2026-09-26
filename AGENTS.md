@@ -444,3 +444,30 @@ CLI による javac / java の確認は、
 - memo.txt / reply.txt を Git へ強制追加しない。
 - 詳細な回答は reply.txt へ保存する。
 - ターミナルには重要な結論だけを表示する。
+
+## 17. リポジトリのフォルダ構成
+
+リポジトリ内のファイルは、次の役割で置き分ける。
+
+```
+materials/
+    教材設計資料（curriculum-map.md、learning-objectives.md、template.md など）
+
+レジメ/
+    学生配布用 Markdown 教材（第NN回_タイトル.md）
+
+プログラム/
+    各回の sample / exercise（プログラム/第NN回/sample/、プログラム/第NN回/exercise/）
+```
+
+新しい授業教材を作成するときも、この構成を使用する。
+
+授業用のレジメや Java コードを materials へ置かない。
+
+レジメ内でコードファイルを示すときは、
+`プログラム/第NN回/sample/Main.java` のように
+リポジトリ内の位置がわかる表記にする。
+
+この構成はリポジトリ内の整理であり、
+Eclipse プロジェクト構成・package 構成を
+決めるものではない（第 15 節のとおり未確定）。
