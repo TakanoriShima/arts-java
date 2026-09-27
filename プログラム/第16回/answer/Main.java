@@ -6,10 +6,9 @@ public class Main {
         int heroAttack = 8;
 
         // 敵のステータス
-        // TODO 演習２-１：敵を「ゴブリン」（HP 50、攻撃力 7）に変更する
-        String enemyName = "スライム";
-        int enemyHp = 25;
-        int enemyAttack = 6;
+        String enemyName = "ゴブリン";
+        int enemyHp = 50;
+        int enemyAttack = 7;
 
         // 今のターン数
         int turn = 1;
@@ -35,14 +34,21 @@ public class Main {
                 break;
             }
 
-            // 敵の攻撃
-            // TODO 演習２-３：4 ターンごとに「強攻撃」で攻撃力の 2 倍のダメージにする
-            heroHp -= enemyAttack;
-            System.out.println(enemyName + "の攻撃！ " + heroName + "に" + enemyAttack + "のダメージ");
+            // 敵の攻撃（4 ターンごとに強攻撃で 2 倍）
+            int enemyDamage = enemyAttack;
+            if (turn % 4 == 0) {
+                enemyDamage = enemyAttack * 2;
+                System.out.println(enemyName + "の強攻撃！");
+            }
+            heroHp -= enemyDamage;
+            System.out.println(enemyName + "の攻撃！ " + heroName + "に" + enemyDamage + "のダメージ");
 
             System.out.println(heroName + " HP:" + heroHp + "  " + enemyName + " HP:" + enemyHp);
 
-            // TODO 演習２-２：勇者の HP が 10 以下なら「ピンチ！」と表示する
+            // 勇者の HP が 10 以下ならピンチを表示する
+            if (heroHp <= 10) {
+                System.out.println("ピンチ！");
+            }
 
             turn++;
         }

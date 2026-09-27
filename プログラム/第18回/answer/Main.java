@@ -22,7 +22,7 @@ public class Main {
 
         System.out.println(enemyName + "があらわれた！");
 
-        while (heroHp > 0 && enemyHp > 0) {
+        while (isAlive(heroHp) && isAlive(enemyHp)) {
             System.out.println();
             System.out.println("--- ターン" + turn + " ---");
             showStatus(heroName, heroHp, heroMaxHp);
@@ -73,6 +73,7 @@ public class Main {
     // 名前と HP を表示する（最大 HP あり）
     static void showStatus(String name, int hp, int maxHp) {
         System.out.println(name + " HP:" + hp + "/" + maxHp);
+        showHpBar(hp);
     }
 
     // 名前と HP を表示する（最大 HP なし）
@@ -109,5 +110,18 @@ public class Main {
             hp = maxHp;
         }
         return hp;
+    }
+
+    // HP が 0 より大きければ true を返す
+    static boolean isAlive(int hp) {
+        return hp > 0;
+    }
+
+    // HP 5 につき「■」を 1 個表示する
+    static void showHpBar(int hp) {
+        for (int i = 0; i < hp / 5; i++) {
+            System.out.print("■");
+        }
+        System.out.println();
     }
 }

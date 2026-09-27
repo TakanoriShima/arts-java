@@ -6,8 +6,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         // コマンドの一覧（配列）
-        // TODO 演習２-２：4 番目のコマンド「ぼうぎょ」を追加する
-        String[] commands = { "攻撃", "薬草を使う", "にげる" };
+        String[] commands = { "攻撃", "薬草を使う", "にげる", "ぼうぎょ" };
 
         // 勇者のステータス
         String heroName = "勇者";
@@ -32,7 +31,10 @@ public class Main {
             System.out.println(heroName + " HP:" + heroHp + "/" + heroMaxHp + "  薬草:" + herbCount + "個");
             System.out.println(enemyName + " HP:" + enemyHp);
 
-            // TODO 演習２-１：for 文で、コマンドの一覧を「1: 攻撃」の形で表示する
+            // コマンドの一覧を表示する
+            for (int i = 0; i < commands.length; i++) {
+                System.out.println((i + 1) + ": " + commands[i]);
+            }
 
             // 1〜コマンドの数 の番号が入力されるまで、くり返し聞く
             int command;
@@ -41,7 +43,8 @@ public class Main {
                 command = scanner.nextInt();
             } while (command < 1 || command > commands.length);
 
-            // TODO 演習２-２：ぼうぎょしたかどうかを表す boolean 型の変数を用意する
+            // ぼうぎょしたかどうか（ターンごとに false から始める）
+            boolean defending = false;
 
             // 選んだコマンドごとの処理
             switch (command) {
@@ -70,7 +73,10 @@ public class Main {
                     System.out.println(heroName + "はにげだした！");
                     escaped = true;
                     break;
-                // TODO 演習２-２：case 4（ぼうぎょ）を追加する
+                case 4:
+                    System.out.println(heroName + "は身を守っている");
+                    defending = true;
+                    break;
             }
 
             // にげた、または敵をたおしたら、ループを抜ける
@@ -78,10 +84,13 @@ public class Main {
                 break;
             }
 
-            // 敵の攻撃
-            // TODO 演習２-２：ぼうぎょしたターンは、ダメージを半分にする
-            heroHp -= enemyAttack;
-            System.out.println(enemyName + "の攻撃！ " + heroName + "に" + enemyAttack + "のダメージ");
+            // 敵の攻撃（ぼうぎょしたターンは半分）
+            int enemyDamage = enemyAttack;
+            if (defending) {
+                enemyDamage = enemyAttack / 2;
+            }
+            heroHp -= enemyDamage;
+            System.out.println(enemyName + "の攻撃！ " + heroName + "に" + enemyDamage + "のダメージ");
             turn++;
         }
 
