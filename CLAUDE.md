@@ -23,6 +23,7 @@ AGENTS.md と CLAUDE.md に矛盾がある場合、
 
 現在は「第 2 版教材の講師確認フェーズ」である（詳細は AGENTS.md 第 3 節）。
 
+- 2026-09-28、講師が第 2 版の教材内容を確定し、学生配布用 PDF（`pdf/`）を作成した。Pleiades 上での確認と、暫定の Pleiades 構成の確定はまだ行っていない。
 - 第 2 版のロードマップ・設計判断の正本：`materials/roadmap-v2.md`
 - `materials/review-v1.md` は第 1 版のレビュー記録。現在の教材の説明として使わない。
 - 第 1 版の教材は `旧教材/第1版/`（参照用）。
@@ -232,9 +233,23 @@ materials/
 プログラム/
     各回の sample / exercise / answer（プログラム/第NN回/sample/ など）
 
+pdf/
+    レジメ/ から生成した学生配布用 PDF（第NN回_タイトル.pdf）
+
+scripts/
+    PDF 生成スクリプト（build-pdf.mjs）と手順（README.md）
+
 旧教材/
     過去の版の教材（参照用）
 ```
+
+### PDF の再生成
+
+- `pdf/` の PDF は `レジメ/` から生成したもの。PDF を直接編集しない。
+- レジメを変更したときは、`node scripts/build-pdf.mjs`（1 回分だけなら `node scripts/build-pdf.mjs 16` のように回番号を指定）で PDF を作り直し、レジメと同じコミットに含める。
+- 必要な環境は Node.js 18 以上と Chrome / Edge だけ（npm パッケージは使わない）。詳細は `scripts/README.md`。
+- 見た目の調整（フォント・改ページ・コードの折り返しなど）は `scripts/build-pdf.mjs` 側で行い、レジメの本文は変えない。
+- 作業用フォルダ `.pdf-build/` は自動で削除され、`.gitignore` で除外している。
 
 sample・exercise・answer の役割は AGENTS.md 第 17 節による。
 
